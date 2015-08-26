@@ -8,5 +8,24 @@ print dir(odds)
 print "odds: ", odds
 print "evens: ", evens
 
-toten.update(set().union(odds,evens))
+# union
+toten |= odds | evens
 print "toten: ", toten
+
+# intersection
+twopower = set([2, 4, 8])
+overlap = odds & twopower
+print "intersection of odds and powers of two: ", overlap
+overlap = evens & twopower
+print "intersection of evens and powers of two: ", overlap
+
+# exclusive
+print "difference of evens and powers of two: ", evens.difference(twopower)
+
+# create immutable shallow copy & update original
+scopy = frozenset(evens.copy())
+evens.remove(10)
+print "evens without ten", evens
+print "shallow immutable copy of evens: ", scopy
+scopy.remove(2)
+print "shallow immutable copy of evens: ", scopy
