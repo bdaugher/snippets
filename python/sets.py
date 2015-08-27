@@ -13,7 +13,8 @@ toten |= odds | evens
 print "toten: ", toten
 
 # intersection
-twopower = set([2, 4, 8])
+twopower = set([2**x for x in range(10)])
+print twopower
 overlap = odds & twopower
 print "intersection of odds and powers of two: ", overlap
 overlap = evens & twopower
