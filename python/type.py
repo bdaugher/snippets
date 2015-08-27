@@ -7,9 +7,12 @@ e = str('abc')
 
 
 
-
-
-bits = 1
-print "bits:", bits, " bits << 1:", bits << 1
-if (1 << 1) & 0x2:
-    print "2nd bit set"
+    
+reg1 = (1 << 2) | (1 << 7) | (1 << 24)   # IRQs on 2nd, 7th, 24th bits
+mask = 0x000000FF
+reg1 &= mask
+print reg1, mask
+if reg1 & (1 << 2):
+    print 'second bit is set'
+if reg1 & (1 << 3):
+    print 'third bit is set'
