@@ -20,3 +20,6 @@ for pal in pals:
     else:
         print pal, "is a palindrome"
                     
+# alternatively
+# or str == str[::-1]
+# str == str.reverse()
