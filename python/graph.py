@@ -3,7 +3,6 @@
 # implement a graph using a dictionary of lists
 #
 
-
 graph = {
 	'1' : ['2', '3'], 
 	'2' : ['1'],

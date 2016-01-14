@@ -13,7 +13,7 @@
 
 
 # pick the next lowest value from either a1 or a2 and insert it into a new list
-def merge_halves(lower, upper):
+def merge_halves(lo, hi):
 
 	i = 0
 	j = 0
@@ -21,41 +21,40 @@ def merge_halves(lower, upper):
 
 	merged = []
 
-	while j < len(lower) and k < len(upper):
-		if lower[j] < upper[k]:
-			merged.insert(i, lower[j])
+	while j < len(lo) and k < len(hi):
+		if lo[j] < hi[k]:
+			merged.insert(i, lo[j])
 			j = j + 1
 		else:
-			merged.insert(i, upper[k])
+			merged.insert(i, hi[k])
 			k = k + 1
 		i = i + 1
 
-	while j < len(lower):
-		merged.insert(i, lower[j])
+	while j < len(lo):			# insert any remaining elements
+		merged.insert(i, lo[j])
 		j = j + 1
 		i = i + 1
 
-	while k < len(upper):
-		merged.insert(i, upper[k])
+	while k < len(hi):
+		merged.insert(i, hi[k])
 		k = k + 1
 		i = i + 1
 
 	return merged
 
-def merge_sort(unsorted):
+def merge_sort(arr):
 
-	if len(unsorted) <= 1:		# base case - nothing to sort
-		return unsorted
+	if len(arr) <= 1:		# base case - nothing to sort
+		return arr
 
-	lower_half = merge_sort(unsorted[:len(unsorted) / 2])
-	upper_half = merge_sort(unsorted[len(unsorted) / 2:])
+	mid = len(arr) / 2
+	lo = merge_sort(arr[:mid])
+	hi = merge_sort(arr[mid:])
 
-	merged = merge_halves(lower_half, upper_half)
-
-	return merged
+	return merge_halves(lo, hi)
 
 
-t1 = range(1,111111111) # reverse sorted
+t1 = range(1,1000) # reverse sorted
 t1.reverse()
 t1_sorted = t1[:] # shallow copy
 t1_sorted.sort()
