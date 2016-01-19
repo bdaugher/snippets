@@ -13,7 +13,6 @@ class priority_queue():
 	arr = []
 	def __init__(self, a=[0]):
 		self.arr = a
-		pass
 
 	def __eq__(self, x):
 		return self.arr.__eq__(x)
